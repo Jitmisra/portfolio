@@ -1,0 +1,342 @@
+:root {
+  /* Modern color scheme with enhanced variables */
+  --primary: #5553ff;
+  --primary-light: #7b78ff;
+  --primary-dark: #4340d4;
+  --primary-gradient: linear-gradient(135deg, #5553ff, #8A80FF);
+  --primary-glow: 0 0 15px rgba(85, 83, 255, 0.5);
+  --secondary: #00c8aa;
+  --secondary-light: #1de9cb;
+  --secondary-gradient: linear-gradient(135deg, #00c8aa, #1de9cb);
+  --dark: #121212;
+  --dark-light: #1f1f1f;
+  --light: #ffffff;
+  --gray: #8891a7;
+  --gray-light: #f1f5f9;
+  --gray-lightest: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f5f8ff;
+  --error: #e53935;
+  --success: #43a047;
+  --warning: #fb8c00;
+  --info: #039be5;
+  
+  /* Layout variables */
+  --container-width: 1200px;
+  --section-spacing: clamp(3.5rem, 6vw, 8rem);
+  --border-radius-sm: 8px;
+  --border-radius: 16px;
+  --border-radius-lg: 24px;
+  --box-shadow: 0 10px 30px -5px rgba(85, 83, 255, 0.1);
+  --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
+  /* Typography */
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-size-sm: clamp(0.75rem, 0.17vw + 0.7rem, 0.89rem);
+  --font-size-base: clamp(0.875rem, 0.25vw + 0.8rem, 1.1rem);
+  --font-size-md: clamp(1.1rem, 0.5vw + 1rem, 1.45rem);
+  --font-size-lg: clamp(1.35rem, 0.85vw + 1.2rem, 1.95rem);
+  --font-size-xl: clamp(1.7rem, 1.4vw + 1.35rem, 2.5rem);
+  --font-size-xxl: clamp(2.2rem, 2vw + 1.6rem, 3.5rem);
+  --line-height: 1.7;
+  
+  font-family: var(--font-main);
+  line-height: var(--line-height);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+
+  color: var(--dark);
+  background-color: var(--light);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+/* Modern dark mode with enhanced contrast */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light: #121212;
+    --dark: #ffffff;
+    --dark-light: #e0e0e0;
+    --gray-light: #2a2a2a;
+    --surface: #1f1f1f;
+    --surface-2: #252525;
+    --box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+    --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    --primary-glow: 0 0 15px rgba(85, 83, 255, 0.7);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 60px; /* Adjusted from 80px to account for smaller header */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 100% 0%, rgba(85, 83, 255, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 0% 80%, rgba(0, 200, 170, 0.03) 0%, transparent 25%);
+  background-attachment: fixed;
+}
+
+/* Modern link styles with better hover effects */
+a {
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  position: relative;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--primary-light);
+}
+
+a.underline-link {
+  position: relative;
+  display: inline-block;
+}
+
+a.underline-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--primary);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+a.underline-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Improved typography scale */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-xxl);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: 2rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+h4 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 1rem 0;
+  opacity: 0.9;
+}
+
+/* Enhanced button styles */
+button, .btn {
+  border-radius: var(--border-radius-sm);
+  border: none;
+  padding: clamp(0.7em, 1.5vw, 0.9em) clamp(1.4em, 3vw, 1.8em);
+  font-size: clamp(0.9em, 1vw, 1em);
+  font-weight: 600;
+  font-family: inherit;
+  background: var(--primary-gradient);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(85, 83, 255, 0.25);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+button::before, .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.4s ease;
+  z-index: -1;
+}
+
+button:hover, .btn:hover {
+  box-shadow: 0 6px 20px rgba(85, 83, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+button:hover::before, .btn:hover::before {
+  left: 100%;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Improved container and section styles */
+.container {
+  max-width: min(var(--container-width), 95%);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 max(1rem, 2vw);
+  box-sizing: border-box;
+}
+
+section {
+  padding: var(--section-spacing) 0;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Enhanced image styles */
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Better section title styling - Changed from center to left alignment */
+.section-title {
+  text-align: left;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+  left: 0;
+  transform: none;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--primary-gradient);
+  border-radius: 4px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Modern glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-effect {
+    background: rgba(30, 30, 30, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Updated responsive styles */
+@media (max-width: 991px) {
+  :root {
+    --section-spacing: clamp(3rem, 5vw, 5rem);
+    --container-width: 100%;
+  }
+  
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-spacing: clamp(2.5rem, 5vw, 4rem);
+    --container-width: 100%;
+  }
+  
+  section {
+    padding: var(--section-spacing) 0;
+  }
+  
+  /* Improve heading readability on mobile */
+  h1 {
+    letter-spacing: -0.01em;
+  }
+  
+  h2 {
+    letter-spacing: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  p {
+    margin: 0.75rem 0;
+  }
+  
+  .section-title::after {
+    left: 0;
+    transform: none;
+  }
+  
+  button, .btn {
+    padding: 0.8em 1.5em;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-spacing: clamp(2.5rem, 4vw, 4rem);
+    --border-radius: 12px;
+    --border-radius-lg: 16px;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  button, .btn {
+    border-radius: var(--border-radius-sm);
+    padding: 0.7em 1.4em;
+  }
+}
